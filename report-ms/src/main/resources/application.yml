@@ -4,7 +4,7 @@ spring:
   profiles:
     default: default
   config:
-    import: "optional:configserver:http://localhost:7777"
+    import: "optional:configserver:http://localhost:7777" #De aqui se conecta al config server para leer el value
 server:
   servlet:
     context-path: /report-ms
