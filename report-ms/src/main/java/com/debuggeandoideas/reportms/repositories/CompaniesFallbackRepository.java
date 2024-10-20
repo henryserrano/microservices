@@ -14,6 +14,7 @@ public class CompaniesFallbackRepository {
     private final WebClient webClient;
     private final String uri;
 
+    //Inyectamos el parametro
     public CompaniesFallbackRepository(WebClient webClient,
                                        @Value("${fallback.uri}") String uri) {
         this.webClient = webClient;

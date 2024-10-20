@@ -1,5 +1,6 @@
 package com.debuggeandoideas.companiescrudfallback;
 
+import com.debuggeandoideas.companiescrudfallback.Company;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.Collections;
 @Slf4j
 public class CompanyController {
 
+    //Crea compania para ahcer el mockup de traerla de una BD
     private static final Company DEFAULT_COMPANY = Company
             .builder()
                 .id(0L)
