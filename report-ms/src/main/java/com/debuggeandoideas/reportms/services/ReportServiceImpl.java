@@ -5,6 +5,7 @@ import com.debuggeandoideas.reportms.models.Company;
 import com.debuggeandoideas.reportms.models.WebSite;
 import com.debuggeandoideas.reportms.repositories.CompaniesFallbackRepository;
 import com.debuggeandoideas.reportms.repositories.CompaniesRepository;
+import com.debuggeandoideas.reportms.streams.ReportPublisher;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
@@ -23,6 +24,7 @@ public class ReportServiceImpl implements ReportService {
     private final ReportHelper reportHelper;
     private final CompaniesFallbackRepository companiesFallbackRepository;
     private final Resilience4JCircuitBreakerFactory circuitBreakerFactory;
+    private final ReportPublisher reportPublisher;
 
     @Override
     public String makeReport(String name) {
@@ -49,6 +51,7 @@ public class ReportServiceImpl implements ReportService {
                 .build();
 
         this.companiesRepository.postByName(company);
+        this.reportPublisher.publishReport(report);
         return "Saved";
     }
 
